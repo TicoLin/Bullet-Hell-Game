@@ -66,6 +66,10 @@ public class GameManager : MonoBehaviour
             {
                 Game_end_text.text = "Completed";
             }
+            if (PlayerPrefs.GetString("jsondata") == null)
+            {
+                PlayerPrefs.SetString("jsondata", JsonUtility.ToJson(player_data));
+            }
             player_data = JsonUtility.FromJson<PlayerData>(PlayerPrefs.GetString("jsondata"));
             highest_score = player_data.highest_score;
             int score = (int)(damage_taken * 100 / 110);
